@@ -1,5 +1,5 @@
-main/out/main/src/main.o: main/src/main.c main/inc/luces.h main/inc/lux.h \
- main/inc/pir.h main/inc/puertos.h libs/sapi/sapi_v0.5.2/base/inc/sapi.h \
+main/out/main/src/lux.o: main/src/lux.c main/inc/lux.h main/inc/puertos.h \
+ libs/sapi/sapi_v0.5.2/base/inc/sapi.h \
  libs/sapi/sapi_v0.5.2/base/inc/sapi_datatypes.h \
  libs/vendor_libs/lpc_chip_43xx/inc/chip.h \
  libs/vendor_libs/lpc_chip_43xx/inc/config_43xx/sys_config.h \

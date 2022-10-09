@@ -1,23 +1,24 @@
 #include "sapi.h"
 #include "puertos.h"
 
+/*
+   FUNCION PUERTOS_INIT()
+      RECIBE:  NADA
+      RETORNA: NADA
+      
+      INICIALIZA LOS PUERTOS DE LA EDU-CIAA
+*/
+
 void puertos_init() {
-   gpioInit(RELAY_OUT,GPIO_OUTPUT);	   // establecer modalidad de los pines
-   gpioInit(TOGGLE_IN,GPIO_INPUT);	   // GPIO de la EDU-CIAA que se
-   gpioInit(PIR_IN,GPIO_INPUT);		   // van a usar.
-   gpioInit(LED_TOGGLE,GPIO_INPUT);
-   
-   /* Establecer el estado inicial del relay -> podría verse un destello en la luz al
-      iniciar el sistema */
-   
-   gpioWrite(RELAY_OUT,ON);      // inicialmente apagado
-   
-   /* Inicializar AnalogIO */
-   /* Posibles configuraciones:
-    *    ADC_ENABLE,  ADC_DISABLE,
-    *    ADC_ENABLE,  ADC_DISABLE,
-    */
-   
-   //adcConfig( ADC_ENABLE ); /* ADC */
-   //dacConfig( DAC_ENABLE ); /* DAC */
+   /*
+      INICIALIZAR LOS PUERTOS DIGITALES A UTILIZAR
+   */
+   gpioInit(RELAY_OUT,  GPIO_OUTPUT);     // salida RELAY
+   gpioInit(TOGGLE_IN,  GPIO_INPUT);      // entrada toggle  RELAY
+   gpioInit(PIR_IN,     GPIO_INPUT);      // entrada sensor  PIR
+   gpioInit(LED_TOGGLE, GPIO_INPUT);      // entrada toggle  LED
+   gpioInit(PIR_ENABLE, GPIO_INPUT);      // entrada control PIR
+   gpioInit(PIR_ST_OUT, GPIO_OUTPUT);     // salida  estado  PIR
+   gpioInit(LUX_ST_OUT, GPIO_OUTPUT);     // salida  estado  LUX
+   gpioInit(LUX_ENABLE, GPIO_INPUT);      // entrada control LUX
 }

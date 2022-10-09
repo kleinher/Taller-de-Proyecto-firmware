@@ -1,10 +1,12 @@
 #ifndef PIR_H_
 #define PIR_H_
 
-void pir_toggle();
+//void pir_toggle();
 void pir_off();
-uint8_t pir_check();
-uint8_t pir_read();
-uint8_t pir_enabled();
+void pir_on();
+//int pir_check();
+int pir_read();
+int pir_enabled();
+int pir_toggle();
 
 #endif
