@@ -13,10 +13,17 @@ void lux_off() {
 }
 
 int lux_toggle() {
-   if (!gpioRead(LUX_ENABLE)) {        // ver si se presionó la entrada de control
+   /*if (!gpioRead(LUX_ENABLE)) {        // ver si se presionó la entrada de control
          delay(50);
          return gpioRead(LUX_ENABLE);
+   }*/
+   /*int valor = !gpioRead(LUX_ENABLE);
+   printf("LUX : %d \n",valor);
+   return valor;*/
+   if (!gpioRead(LUX_ENABLE)) {
+      lux_status=!lux_status;
    }
+   printf("* LUX    %d *\n",lux_status);
 }
 
 int lux_enabled() {
@@ -24,7 +31,8 @@ int lux_enabled() {
 }
 
 int lux_read() {
-   if (lux_status) {
+   /*if (lux_status) {
       return adcRead(LUX_IN);
-   } else return 5000;           // si el sensor está desactivado, devolver "5000" (dato inválido)
+   } else return 5000; */          // si el sensor está desactivado, devolver "5000" (dato inválido)
+   return 5000;
 }

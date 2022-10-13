@@ -35,6 +35,13 @@ int main(void){
    
    pir_off();              // deshabilita PIR
    lux_off();              // deshabilita LUX
+   
+   delay_t delay1;
+   delay_t delay2;
+
+   /* Inicializar Retardo no bloqueante con tiempo en ms */
+   delayConfig(&delay1,100);
+   delayConfig(&delay2,500);
 
    /* bucle principal */
    while(1) {      
@@ -45,32 +52,58 @@ int main(void){
             C. Se recibe un valor < 200 del sensor LDR
       */
       
-      if (toggle_read()) {    // si se pulsó la tecla, conmutar estado
-         relay_toggle();
+      // leer entradas de control cada 50ms
+      if (delayRead(&delay1)) {
+         
+         // leer entradas de control de los sensores
+         pir_toggle();
+         lux_toggle();
+         
+         // leer entrada de control de luz LED
+         led_toggle();
+         
+         /*if (pir_toggle()) { if (pir_enabled()) pir_off; else pir_on; }
+         if (lux_toggle()) { if (lux_enabled()) lux_off; else lux_on; }*/
+         
+         // si los sensores están activados, cualquiera enciende la luz
+         //if ((pir_enabled()) || (lux_enabled())) {
+            if ((pir_read()) || (lux_read()<200) || (toggle_read())) relay_on(); else relay_off();
+               
+         // si los sensores están desactivados, entonces solo el toggle enciende la luz
+         //} else { if (toggle_read()) relay_on(); else relay_off(); }
+         
+            
+         /*
+            Leer potenciómetro y ajustar el brillo del LED
+         */
+         led_bright(pot_read());
+            
       }
       
-      if ((pir_read()) || (lux_read()<200)) {  // si se recibe algo de los sensores, prender si o si
+      // actualizar el estado del relay cada 500ms
+      if (delayRead(&delay2)) relay_toggle();
+      
+      /*if (toggle_read()) {    // si se pulsó la tecla, conmutar estado
+         relay_toggle();
+      }*/
+      
+      /*if ((pir_read()) || (lux_read()<200)) {  // si se recibe algo de los sensores, prender si o si
          relay_on();
       } else {
          if ((pir_enabled()) || (lux_enabled()))
             relay_off();
-      }
-      
-      /*
-         Leer potenciómetro y ajustar el brillo del LED
-      */
-      led_bright(pot_read());
+      }*/
       
       /*
          Comprobar entradas de control de los sensores, para ver si debo activar o desactivar alguno
       */
-      if (pir_toggle()) {                                // comprobación entrada PIR_ENABLE
+      /*if (pir_toggle()) {                                // comprobación entrada PIR_ENABLE
          if (pir_enabled()) pir_off(); else pir_on();
-      }
+      }*/
       
-      if (lux_toggle()) {                                // comprobación entrada LUX_ENABLE
+      /*if (lux_toggle()) {                                // comprobación entrada LUX_ENABLE
          if (lux_enabled()) lux_off(); else lux_on();
-      }
+      }*/
    }
 
    return 0 ;

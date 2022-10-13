@@ -28,10 +28,18 @@ void pir_on() {
 }
 
 int pir_toggle() {
-   if (!gpioRead(PIR_ENABLE)) {        // ver si se presionó la entrada de control
+   /*if (!gpioRead(PIR_ENABLE)) {        // ver si se presionó la entrada de control
          delay(50);
          return gpioRead(PIR_ENABLE);
+   }*/
+   if (!gpioRead(PIR_ENABLE)) {
+      pir_status=!pir_status;
    }
+   /*int valor = !gpioRead(PIR_ENABLE);
+   printf("PIR : %d \n",valor);
+   return valor;*/
+   printf("* PIR    %d *\n",pir_status);
+   //return pir_status;                  // y devolver el resultado
 }
 
 /*int pir_check() {

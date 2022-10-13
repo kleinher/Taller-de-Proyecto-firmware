@@ -4,8 +4,10 @@
 void relay_on();
 void relay_off();
 void relay_toggle();
+int relay_change();
 void led_bright(int b);
 int toggle_read();
 int pot_read();
+void led_toggle();
 
 #endif

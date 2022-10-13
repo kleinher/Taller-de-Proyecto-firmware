@@ -13,7 +13,7 @@ void puertos_init() {
    /*
       INICIALIZAR LOS PUERTOS DIGITALES A UTILIZAR
    */
-   gpioInit(RELAY_OUT,  GPIO_OUTPUT);     // salida RELAY
+   //gpioInit(RELAY_OUT,  GPIO_OUTPUT);     // salida RELAY
    gpioInit(TOGGLE_IN,  GPIO_INPUT);      // entrada toggle  RELAY
    gpioInit(PIR_IN,     GPIO_INPUT);      // entrada sensor  PIR
    gpioInit(LED_TOGGLE, GPIO_INPUT);      // entrada toggle  LED
