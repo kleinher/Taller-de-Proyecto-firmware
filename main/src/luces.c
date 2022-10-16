@@ -13,52 +13,36 @@ int relay_change() {
 }
 
 void relay_off() {
-   relay_status=ON;
-   //relay_previous=ON;
-   //gpioWrite(RELAY_OUT,ON);               // apaga relay
-   //delay(450);                            // con delay
+   relay_status=ON;        // apagar relay
 }
 
 void relay_on() {
-   relay_status=OFF;
-   //relay_previous=OFF;
-   //gpioWrite(RELAY_OUT,OFF);              // enciende relay
-   //delay(450);                            // con delay
+   relay_status=OFF;       // encender relay
 }
 
 void relay_toggle() {
-   relay_previous=relay_status; // actualizar estado
+   relay_previous=relay_status;           // actualizar estado
    gpioWrite(RELAY_OUT,!relay_status);    // conmutar relay
-   printf("*********************************************************** RELAY : %d *\n",relay_status);
-   //delay(450);                            // con delay
+   printf("*********************************************************** RELAY : %d *\n",relay_status);    // debug
 }
 
 int toggle_read() {
-   if (!gpioRead(TOGGLE_IN)) {
-      toggle_status=!toggle_status;
-   }
-   printf("* TOGGLE %d *\n",toggle_status);
-   return toggle_status;                  // y devolver el resultado
-   //if (!toggle_status) {                        // ver si se presionó la entrada de control
-         //delay(50);
-         //toggle_status = gpioRead(TOGGLE_IN);
-         
-   //}
+   if (!gpioRead(TOGGLE_IN)) toggle_status=!toggle_status;  // leer la entrada de control
+   printf("* TOGGLE %d *\n",toggle_status);  // debug
+   return toggle_status;                                    // y devolver el resultado
 }
 
-void led_bright(int b) {      // dar brillo al LED
+void led_bright(int b) {                     // dar brillo al LED (versión DAC)
    if (led_status) {
       dacWrite(LED_OUT, b);
-      printf("* POT    %d *\n",b);
-   } else printf("* POT    OFF *\n");
+      printf("* POT    %d *\n",b);     // debug
+   } else printf("* POT    OFF *\n");  // debug
 }
 
 void led_toggle() {
-   if (!gpioRead(LED_TOGGLE)) {
-      led_status=!led_status;
-   }
+   if (!gpioRead(LED_TOGGLE)) led_status=!led_status;       // leer entrada de control y actualizar el estado del led
 }
 
-int pot_read() {              // leer potenciometro y devolver el valor
+int pot_read() {                             // leer potenciometro y devolver el valor
    return adcRead(POT_IN);
 }

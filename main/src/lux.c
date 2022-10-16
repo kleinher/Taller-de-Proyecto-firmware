@@ -13,16 +13,7 @@ void lux_off() {
 }
 
 int lux_toggle() {
-   /*if (!gpioRead(LUX_ENABLE)) {        // ver si se presionó la entrada de control
-         delay(50);
-         return gpioRead(LUX_ENABLE);
-   }*/
-   /*int valor = !gpioRead(LUX_ENABLE);
-   printf("LUX : %d \n",valor);
-   return valor;*/
-   if (!gpioRead(LUX_ENABLE)) {
-      lux_status=!lux_status;
-   }
+   if (!gpioRead(LUX_ENABLE)) lux_status=!lux_status;       // ver estado de la entrada de control
    printf("* LUX    %d *\n",lux_status);
 }
 

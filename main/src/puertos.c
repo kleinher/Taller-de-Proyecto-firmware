@@ -13,12 +13,24 @@ void puertos_init() {
    /*
       INICIALIZAR LOS PUERTOS DIGITALES A UTILIZAR
    */
-   //gpioInit(RELAY_OUT,  GPIO_OUTPUT);     // salida RELAY
+   gpioInit(RELAY_OUT,  GPIO_OUTPUT);     // salida RELAY
+   gpioInit(LED_OUT,    GPIO_OUTPUT);     // salida tira LED
+   
    gpioInit(TOGGLE_IN,  GPIO_INPUT);      // entrada toggle  RELAY
-   gpioInit(PIR_IN,     GPIO_INPUT);      // entrada sensor  PIR
    gpioInit(LED_TOGGLE, GPIO_INPUT);      // entrada toggle  LED
+   
+   gpioInit(PIR_IN,     GPIO_INPUT);      // entrada sensor  PIR
    gpioInit(PIR_ENABLE, GPIO_INPUT);      // entrada control PIR
    gpioInit(PIR_ST_OUT, GPIO_OUTPUT);     // salida  estado  PIR
+   
    gpioInit(LUX_ST_OUT, GPIO_OUTPUT);     // salida  estado  LUX
    gpioInit(LUX_ENABLE, GPIO_INPUT);      // entrada control LUX
+   
+   gpioInit(MODE_TOGGLE,GPIO_INPUT);      // entrada control modo
+   gpioInit(MODE_ST_OUT,GPIO_OUTPUT);     // salida  estado  modo
+   
+   /*
+      INICIALIZAR PERIFERICOS ANALOGICOS USADOS: ADC Y PWM
+   */
+   adcConfig(ADC_ENABLE);  // habilitar ADC
 }
