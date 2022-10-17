@@ -5,7 +5,7 @@
 
 // LUCES
 #define	RELAY_OUT	GPIO0       // salida CIAA -> RELAY
-#define  LED_OUT     GPIO8       // salida CIAA -> LED (versión DAC)
+#define  LED_OUT     GPIO8       // salida CIAA -> LED
 
 // SENSORES
 #define  PIR_IN		GPIO4	      // entrada de sensor de movimiento (salida PIR -> entrada CIAA)
