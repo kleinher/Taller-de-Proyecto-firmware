@@ -56,19 +56,30 @@ int main(void){
       
       // leer entradas de control cada 50ms
       if (delayRead(&delay1)) {
-         // leer entradas de control de los sensores
-         pir_toggle();
-         lux_toggle();
          
-         // leer entrada de control de luz LED
-         led_toggle();
-                  
-         // si los sensores están activados, cualquiera enciende la luz
-         if ((pir_read()) || (lux_read()<MAX_LUX) || (toggle_read()) relay_on(); else relay_off();
+         /*
+            Leer selector de modo y decidir:
+               Si es '1' u 'ON', ignorar las entradas de configuración (botonera) y hacer caso a la interfaz web
+               Si es '0' u 'OFF', ignorar la interfaz web y hacer caso a la botonera.
+         */
+         mode_toggle();
+         if (mode_status) {
+            // tomar un valor de la UART y ver que hacer con eso
             
-         // leer potenciómetro y ajustar el brillo del LED
-         led_bright(pot_read());
+         } else {
+            // leer entradas de control de los sensores
+            pir_toggle();
+            lux_toggle();
             
+            // leer entrada de control de luz LED
+            led_toggle();
+            
+            // leer potenciómetro y ajustar el brillo del LED
+            led_bright(pot_read());
+            
+            // si los sensores están activados, cualquiera enciende la luz
+            if ((pir_read()) || (lux_read()<MAX_LUX) || (toggle_read()) relay_on(); else relay_off();
+         }
       }
       
       // actualizar el estado del relay cada 500ms

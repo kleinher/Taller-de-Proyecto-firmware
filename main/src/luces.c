@@ -34,7 +34,7 @@ int toggle_read() {
 
 void led_bright(int b) {                     // dar brillo al LED (versión DAC)
    if (led_status) {
-      dacWrite(LED_OUT, b);
+      //dacWrite(LED_OUT, b);
       printf("* POT    %d *\n",b);     // debug
    } else printf("* POT    OFF *\n");  // debug
 }
