@@ -1,4 +1,8 @@
-/* * * *   CODIGO DEL SENSOR PIR   * * * */
+/*
+   CONTROL SENSOR DE MOVIMIENTO HC-S501 (PIR)
+   
+   CONSTANTINO PALACIO, OCT-22.
+*/
 
 #include "sapi.h"
 #include "pir.h"

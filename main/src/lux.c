@@ -1,3 +1,9 @@
+/*
+   CONTROL SENSOR LUMINOSIDAD LUX (LDR)
+   
+   CONSTANTINO PALACIO, OCT-22.
+*/
+
 #include "lux.h"
 #include "puertos.h"
 #include "sapi.h"
@@ -22,8 +28,8 @@ int lux_enabled() {
 }
 
 int lux_read() {
-   /*if (lux_status) {
+   if (lux_status) {
       return adcRead(LUX_IN);
-   } else return 5000; */          // si el sensor está desactivado, devolver "5000" (dato inválido)
-   return 5000;
+   } else return 5000;           // si el sensor está desactivado, devolver "5000" (dato inválido)
+   //return 5000;
 }

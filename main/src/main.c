@@ -2,8 +2,8 @@
    Tareas por hacer:
    
    *1. corregir el bounce en las teclas
-   2. implementar sensor de luminosidad con adc (ver como conectar el ldr al adc -> esquematico)
-   3. implementar dimmer con pwm (o con dac???)
+   *2. implementar sensor de luminosidad con adc (ver como conectar el ldr al adc -> esquematico)
+   *3. implementar dimmer con pwm
    *4. leds de estado
    5. ver que si el sensor capta algo y apago la deteccion, la luz queda prendida (???)
    *6. retardos no bloqueantes
