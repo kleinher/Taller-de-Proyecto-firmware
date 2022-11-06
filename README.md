@@ -12,3 +12,4 @@ Sistema de Control de Luminaria basado en placa EDU-CIAA-NXP.
 * 12/10/2022   22:30   Constantino   Corrección, test, datasheets, esquemático
 * 18/10/2022   09:40   Constantino   Corrección, datasheets, esquemático
 * 30/10/2022   22:30   Constantino   Código LUX, PCB test
+* 06/11/2022   09:40   Constantino   Corrección PCB test, diseño preliminar poncho
