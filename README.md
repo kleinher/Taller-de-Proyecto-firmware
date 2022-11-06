@@ -2,6 +2,7 @@
 Sistema de Control de Luminaria basado en placa EDU-CIAA-NXP.
 
 ## Commits
+```
 * 03/10/2022   17:48   Constantino   Commit inicial
 * 03/10/2022   18:00   Constantino   Carga de archivos de Embedded IDE
 * 03/10/2022   20:39   Constantino   Ejemplos Arduino, datasheets, proteus
@@ -13,3 +14,5 @@ Sistema de Control de Luminaria basado en placa EDU-CIAA-NXP.
 * 18/10/2022   09:40   Constantino   Corrección, datasheets, esquemático
 * 30/10/2022   22:30   Constantino   Código LUX, PCB test
 * 06/11/2022   09:40   Constantino   Corrección PCB test, diseño preliminar poncho
+* 06/11/2022   10:10   Constantino   Formato README.md
+```
