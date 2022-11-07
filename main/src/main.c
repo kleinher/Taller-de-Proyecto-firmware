@@ -22,6 +22,8 @@
 #define  MAX_LUX  200      // maximo del sensor de luminosidad
 
 int main(void){
+   
+   int mode_status;
 
    /* ------------- INICIALIZACIONES ------------- */
 
@@ -62,7 +64,8 @@ int main(void){
                Si es '1' u 'ON', ignorar las entradas de configuración (botonera) y hacer caso a la interfaz web
                Si es '0' u 'OFF', ignorar la interfaz web y hacer caso a la botonera.
          */
-         mode_toggle();
+         //mode_toggle();
+         mode_status=0;
          if (mode_status) {
             // tomar un valor de la UART y ver que hacer con eso
             
@@ -78,7 +81,7 @@ int main(void){
             led_bright(pot_read());
             
             // si los sensores están activados, cualquiera enciende la luz
-            if ((pir_read()) || (lux_read()<MAX_LUX) || (toggle_read()) relay_on(); else relay_off();
+            if ((pir_read()) || (lux_read()<MAX_LUX) || (toggle_read()))ºº relay_on(); else relay_off();
          }
       }
       

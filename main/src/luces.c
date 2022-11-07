@@ -54,16 +54,16 @@ void led_bright(int b) {                     // dar brillo al LED
             768..1023 = 76% - 100% = 192..255
       */
       
-      if ((b >= 0) and (b <= 255))           // 0..25 %
+     /* if ((b >= 0) and (b <= 255))           // 0..25 %
          valor_pwm = b/4;
       else if ((b >= 256) and (b <= 511))    // 26..50 %
          valor_pwm = 65 + b/8;
       else if ((b >= 512) and (b <= 767))    // 51..75 %
          valor_pwm = 128 + b/12;
       else                                   // 76..100 %
-         valor_pwm = 192 + b/16;
+         valor_pwm = 192 + b/16;*/
       
-      pwmWrite(LED_OUT,valor_pwm);
+      pwmWrite(LED_OUT,255);
       
       //dacWrite(LED_OUT, b);
       //printf("* POT    %d *\n",b);     // debug

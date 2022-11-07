@@ -16,6 +16,8 @@
 */
 
 void puertos_init() {
+   int valor;
+   
    /*
       INICIALIZAR LOS PUERTOS DIGITALES A UTILIZAR
    */
