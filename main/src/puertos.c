@@ -12,11 +12,13 @@
       RECIBE:  NADA
       RETORNA: NADA
       
-      INICIALIZA LOS PUERTOS DE LA EDU-CIAA
+      INICIALIZA PUERTOS I/O DIGITALES
+      INICIALIZA PERIFERICO ADC
+      INICIALIZA PERIFERICO PWM
 */
 
 void puertos_init() {
-   int valor;
+   int valor;     // valor "de descarte" devuelto por pwmConfig()
    
    /*
       INICIALIZAR LOS PUERTOS DIGITALES A UTILIZAR
@@ -28,13 +30,10 @@ void puertos_init() {
    
    gpioInit(PIR_IN,     GPIO_INPUT);      // entrada sensor  PIR
    gpioInit(PIR_ENABLE, GPIO_INPUT);      // entrada control PIR
-   gpioInit(PIR_ST_OUT, GPIO_OUTPUT);     // salida  estado  PIR
    
-   gpioInit(LUX_ST_OUT, GPIO_OUTPUT);     // salida  estado  LUX
    gpioInit(LUX_ENABLE, GPIO_INPUT);      // entrada control LUX
    
    gpioInit(MODE_TOGGLE,GPIO_INPUT);      // entrada control modo
-   gpioInit(MODE_ST_OUT,GPIO_OUTPUT);     // salida  estado  modo
    
    /*
       INICIALIZAR PERIFERICOS ANALOGICOS USADOS: ADC Y PWM

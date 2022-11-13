@@ -81,7 +81,7 @@ int main(void){
             led_bright(pot_read());
             
             // si los sensores están activados, cualquiera enciende la luz
-            if ((pir_read()) || (lux_read()<MAX_LUX) || (toggle_read()))ºº relay_on(); else relay_off();
+            if ((pir_read()) || (lux_read()<MAX_LUX) || (toggle_read())) relay_on(); else relay_off();
          }
       }
       
