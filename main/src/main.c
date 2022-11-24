@@ -44,7 +44,7 @@ int main(void){
    uint8_t uart_chr;       // dato leido de la UART
 
    /* Inicializar Retardo no bloqueante con tiempo en ms */
-   delayConfig(&delay1,100);  // para chequeo de entradas de control
+   delayConfig(&delay1,10);  // para chequeo de entradas de control
    delayConfig(&delay2,500);  // para chequeo y actualización del estado del relay
 
    /* bucle principal */
