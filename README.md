@@ -19,4 +19,5 @@ Sistema de Control de Luminaria basado en placa EDU-CIAA-NXP.
 * 07/11/2022   17:03   Constantino   Actualización README.md
 * 13/11/2022   20:40   Constantino   Poncho, código PWM, actualización puertos
 * 23/11/2022   22:20   Constantino   Corrección PCB
+* 25/11/2022   14:40   Constantino   Informe en PDF
 ```
