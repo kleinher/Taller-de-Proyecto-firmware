@@ -72,10 +72,9 @@ int main(void){
          */
          mode_status = mode_toggle();
          if (mode_status) {
-            // tomar un valor de la UART y ver que hacer con eso
-             if(leerJson()){
+            if(leerJson()){
                imprimirJson();
-                  
+               if(true){  //debug
                if(luz_1()){
                    gpioWrite(RELAY_ST_OUT,ON);
                }
@@ -96,9 +95,10 @@ int main(void){
                   gpioWrite(PIR_ST_OUT,ON);
                }else{
                   gpioWrite(PIR_ST_OUT, OFF);
-               }
+               }}
             }
-            
+            //led_bright(led_value())
+            if ((luz_1()) || (lux_read()<MAX_LUX) || (pir_read())) relay_on(); else relay_off();
          } else {
             // leer entradas de control de los sensores
             pir_toggle();
