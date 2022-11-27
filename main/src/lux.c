@@ -12,14 +12,25 @@ int lux_status=OFF;
 
 void lux_on(){
    lux_status=ON;    // habilitar LDR
+   
+   //DEBUG
+   gpioWrite(LUX_ST_OUT, ON);
 }
 
 void lux_off() {
    lux_status=OFF;   // deshabilitar LDR
+   
+   //DEBUG
+   gpioWrite(LUX_ST_OUT, OFF);
 }
 
 int lux_toggle() {
    if (!gpioRead(LUX_ENABLE)) lux_status=!lux_status;       // ver estado de la entrada de control
+      
+   //DEBUG
+   if(lux_status) lux_on();
+   else lux_off();
+      
    printf("* LUX    %d *\n",lux_status);
 }
 
