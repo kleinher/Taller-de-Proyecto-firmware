@@ -74,7 +74,7 @@ int main(void){
          if (mode_status) {
             if(leerJson()){
                imprimirJson();
-               if(true){  //debug
+               if(1){  //debug
                if(luz_1()){
                    gpioWrite(RELAY_ST_OUT,ON);
                }
