@@ -36,6 +36,13 @@ void relay_toggle() {
 
 int toggle_read() {
    if (!gpioRead(TOGGLE_IN)) toggle_status=!toggle_status;  // leer la entrada de control
+      
+   //DEBUG
+   if(toggle_status)
+      gpioWrite(RELAY_ST_OUT,ON);
+   else
+      gpioWrite(RELAY_ST_OUT, OFF);
+   
    //printf("* TOGGLE %d *\n",toggle_status);  // debug
    return toggle_status;                                    // y devolver el resultado
 }
@@ -72,6 +79,12 @@ void led_bright(int b) {                     // dar brillo al LED
 
 void led_toggle() {
    if (!gpioRead(LED_TOGGLE)) led_status=!led_status;       // leer entrada de control y actualizar el estado del led
+      
+   //DEBUG
+   if(led_status)
+      gpioWrite(LED_ST_OUT,ON);
+   else
+      gpioWrite(LED_ST_OUT, OFF);
 }
 
 int pot_read() {                             // leer potenciometro y devolver el valor
