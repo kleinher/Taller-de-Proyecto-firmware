@@ -4,3 +4,5 @@ int wifiSetup();
 int leerJson();
 int imprimirJson();
 int luz_1();
+int led();
+int sensor_luminosidad();

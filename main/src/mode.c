@@ -5,12 +5,12 @@
 int   mode_status = OFF;
 
 void mode_off() {
-   mode_status=OFF;                     // apagar PIR
+   mode_status=OFF;                     // MODO WIFI OFF
    gpioWrite(MODE_ST_OUT, OFF);         // y actualizar el LED de estado
 }
 
 void mode_on() {
-   mode_status=ON;                      // encender PIR
+   mode_status=ON;                      // MODO WIFI ON
    gpioWrite(MODE_ST_OUT, ON);          // y actualizar el LED de estado
 }
 
