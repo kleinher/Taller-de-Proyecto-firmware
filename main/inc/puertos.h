@@ -24,6 +24,10 @@
 #define  LUX_ST_OUT  LED2        // salida a LED de estado del LDR
 #define  MODE_ST_OUT LED3        // salida a LED de estado de modo
 
+//DEBUG
+#define  RELAY_ST_OUT  LCD3      // salida control rele
+#define  LED_ST_OUT  LCDRS       // salida control tira led
+
 // UART
 #define  UART_RX     RS232_RX    // conexión RX UART (pin 23 conector J1 EDU-CIAA)
 #define  UART_TX     RS232_TX    // conexión TX UART (pin 25 conector J1 EDU-CIAA)
