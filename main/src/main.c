@@ -74,7 +74,7 @@ int main(void){
          mode_status = mode_toggle();
          if (mode_status) {
             if(leerJson()){
-               imprimirJson();
+               //imprimirJson();
                if(1){  //debug
                if(luz_1()){
                    gpioWrite(RELAY_ST_OUT,ON);
@@ -83,6 +83,8 @@ int main(void){
                    gpioWrite(RELAY_ST_OUT,OFF);
                }
                if(led()){
+                  led_on();
+                  led_bright(pot_read());
                   gpioWrite(LED_ST_OUT,ON);
                }else{
                   gpioWrite(LED_ST_OUT, OFF);

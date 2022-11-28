@@ -9,5 +9,5 @@ void led_bright(int b);
 int toggle_read();
 int pot_read();
 void led_toggle();
-
+void led_on();
 #endif

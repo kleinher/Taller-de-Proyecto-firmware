@@ -73,10 +73,13 @@ void led_bright(int b) {                     // dar brillo al LED
       pwmWrite(LED_OUT,valor_pwm);
       
       //dacWrite(LED_OUT, b);
-      //printf("* POT    %d *\n",b);     // debug
+      printf("* POT    %d *\n",b);     // debug
    } //else printf("* POT    OFF *\n");  // debug
 }
-
+void led_on()
+{
+   led_status=ON;
+}
 void led_toggle() {
    if (!gpioRead(LED_TOGGLE)) led_status=!led_status;       // leer entrada de control y actualizar el estado del led
       

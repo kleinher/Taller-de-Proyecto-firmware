@@ -48,9 +48,16 @@ int pir_read() {
    printf("Entro %d",estado);
    
  
-   if (pir_status){ if(estado){
-        gpioInit(GPIO0, GPIO_OUTPUT);
-      gpioWrite(GPIO0, ON); return estado;  
-   }
-   else{gpioWrite(GPIO0, OFF); }} else {gpioWrite(GPIO0, OFF);return 0;}
+   if (pir_status){ 
+      if(estado){
+         gpioInit(GPIO0, GPIO_OUTPUT);
+         gpioWrite(GPIO0, ON); return estado;  
+      }
+      else{
+         gpioWrite(GPIO0, OFF); 
+      }
+   } else {
+      gpioWrite(GPIO0, OFF);
+      return 0;
+      }
 }
