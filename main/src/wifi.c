@@ -70,7 +70,7 @@ int leerJson(){
    while( (i < size_json) && (dato != enter)){
       if(uartReadByte( UART_232, &dato)){
          palabra[i]=dato;
-         uartWriteByte( UART_USB, dato );
+         //uartWriteByte( UART_USB, dato );
 
          i++;
       }

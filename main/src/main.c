@@ -53,6 +53,7 @@ int main(void){
    wifiSetup();
    cJSON *json = NULL;
    /* bucle principal */
+
    
    while(1) {      
       /*
@@ -92,9 +93,9 @@ int main(void){
                   gpioWrite(LUX_ST_OUT, OFF);
                }
                if(sensor_movimiento()){
-                  gpioWrite(PIR_ST_OUT,ON);
+                   pir_on();
                }else{
-                  gpioWrite(PIR_ST_OUT, OFF);
+                   pir_off();
                }}
             }
             //led_bright(led_value())
