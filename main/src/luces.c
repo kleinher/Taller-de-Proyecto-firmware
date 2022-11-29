@@ -60,7 +60,8 @@ void led_bright(int b) {                     // dar brillo al LED
             512.. 767 = 51% -  75% = 128..191
             768..1023 = 76% - 100% = 192..255
       */
-      
+      if(!led_status)
+         pwmWrite(LED_OUT,0);
       if ((b >= 0) && (b <= 255))           // 0..25 %
          valor_pwm = b/4;
       else if ((b >= 256) && (b <= 511))    // 26..50 %
@@ -73,12 +74,17 @@ void led_bright(int b) {                     // dar brillo al LED
       pwmWrite(LED_OUT,valor_pwm);
       
       //dacWrite(LED_OUT, b);
-      printf("* POT    %d *\n",b);     // debug
+      //printf("* POT    %d *\n",b);     // debug
    } //else printf("* POT    OFF *\n");  // debug
 }
 void led_on()
 {
    led_status=ON;
+}
+void led_off()
+{
+   led_status=OFF;
+   pwmWrite(LED_OUT,0);
 }
 void led_toggle() {
    if (!gpioRead(LED_TOGGLE)) led_status=!led_status;       // leer entrada de control y actualizar el estado del led

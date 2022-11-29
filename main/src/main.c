@@ -74,7 +74,8 @@ int main(void){
          mode_status = mode_toggle();
          if (mode_status) {
             if(leerJson()){
-               //imprimirJson();
+               imprimirJson();
+               
                if(1){  //debug
                if(luz_1()){
                    gpioWrite(RELAY_ST_OUT,ON);
@@ -84,9 +85,12 @@ int main(void){
                }
                if(led()){
                   led_on();
-                  led_bright(pot_read());
+                  int a = intensidad();
+                  printf("intensidad %d",a);
+                  led_bright(a);
                   gpioWrite(LED_ST_OUT,ON);
                }else{
+                  led_off();
                   gpioWrite(LED_ST_OUT, OFF);
                }
                if(sensor_luminosidad()){
@@ -98,7 +102,9 @@ int main(void){
                    pir_on();
                }else{
                    pir_off();
-               }}
+                  
+               }
+               printf("final");}
             }
             //led_bright(led_value())
             if ((luz_1()) || (lux_read()<MAX_LUX) || (pir_read())) relay_on(); else relay_off();

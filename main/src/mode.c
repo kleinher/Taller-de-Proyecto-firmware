@@ -18,6 +18,6 @@ int mode_toggle() {
    if (!gpioRead(MODE_TOGGLE)) mode_status=!mode_status;
    if(mode_status) mode_on();
    else mode_off();
-   printf("* Mode    %d *\n",mode_status);
+   //printf("* Mode    %d *\n",mode_status);
    return mode_status;
 }

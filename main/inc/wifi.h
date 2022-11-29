@@ -6,3 +6,4 @@ int imprimirJson();
 int luz_1();
 int led();
 int sensor_luminosidad();
+int intensidad();

@@ -18,3 +18,12 @@ main/out/main/src/wifi.d
 main/out/main/src/wifi.o
 proteus/poncho.pdsprj.DESKTOP-4CCOVL2.Hernan.workspace
 main/out/main.bin
+*.o
+*.csv
+*.d
+*.elf
+*.bin
+*.lst
+*.map
+*.csv
+*.o

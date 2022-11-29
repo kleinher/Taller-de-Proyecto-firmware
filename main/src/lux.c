@@ -31,7 +31,7 @@ int lux_toggle() {
    if(lux_status) lux_on();
    else lux_off();
       
-   printf("* LUX    %d *\n",lux_status);
+   //printf("* LUX    %d *\n",lux_status);
 }
 
 int lux_enabled() {
@@ -40,7 +40,10 @@ int lux_enabled() {
 
 int lux_read() {
    if (lux_status) {
-      return adcRead(LUX_IN);
+      int a = adcRead(LUX_IN);
+      printf("* LUX    %d *\n",a);
+      return a;
+      
    } else return 5000;           // si el sensor está desactivado, devolver "5000" (dato inválido)
    //return 5000;
 }
