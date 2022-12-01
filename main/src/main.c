@@ -16,7 +16,9 @@
 #include "pir.h"           // control de sensor de movimiento PIR
 #include "puertos.h"       // definiciones e inicialización de puertos
 #include "sapi.h"          // librería sAPI
-
+#include "mode.h"
+#include "cJSON.h"
+#include "wifi.h"
 /* * * *   DEFINICIONES DE PUERTOS DE ADC/DAC   * * * */
 
 #define  MAX_LUX  200      // maximo del sensor de luminosidad
@@ -44,10 +46,15 @@ int main(void){
    uint8_t uart_chr;       // dato leido de la UART
 
    /* Inicializar Retardo no bloqueante con tiempo en ms */
-   delayConfig(&delay1,10);  // para chequeo de entradas de control
+   delayConfig(&delay1,100);  // para chequeo de entradas de control
    delayConfig(&delay2,500);  // para chequeo y actualización del estado del relay
-
+   
+   /*wifi setup*/
+   wifiSetup();
+   cJSON *json = NULL;
    /* bucle principal */
+
+   
    while(1) {      
       /*
          Encender la luz si se da alguna o varias de las siguientes condiciones:
@@ -55,20 +62,52 @@ int main(void){
             B. Se recibe un '1' del sensor PIR
             C. Se recibe un valor < MAX_LUX del sensor LDR
       */
-      
+
       // leer entradas de control cada 50ms
       if (delayRead(&delay1)) {
-         
+        
          /*
             Leer selector de modo y decidir:
                Si es '1' u 'ON', ignorar las entradas de configuración (botonera) y hacer caso a la interfaz web
                Si es '0' u 'OFF', ignorar la interfaz web y hacer caso a la botonera.
          */
-         //mode_toggle();
-         mode_status=0;
+         mode_status = mode_toggle();
          if (mode_status) {
-            // tomar un valor de la UART y ver que hacer con eso
-            
+            if(leerJson()){
+               imprimirJson();
+               
+               if(1){  //debug
+               if(luz_1()){
+                   gpioWrite(RELAY_ST_OUT,ON);
+               }
+               else{
+                   gpioWrite(RELAY_ST_OUT,OFF);
+               }
+               if(led()){
+                  led_on();
+                  int a = intensidad();
+                  printf("intensidad %d",a);
+                  led_bright(a);
+                  gpioWrite(LED_ST_OUT,ON);
+               }else{
+                  led_off();
+                  gpioWrite(LED_ST_OUT, OFF);
+               }
+               if(sensor_luminosidad()){
+                  gpioWrite(LUX_ST_OUT,ON);
+               }else{
+                  gpioWrite(LUX_ST_OUT, OFF);
+               }
+               if(sensor_movimiento()){
+                   pir_on();
+               }else{
+                   pir_off();
+                  
+               }
+               printf("final");}
+            }
+            //led_bright(led_value())
+            if ((luz_1()) || (lux_read()<MAX_LUX) || (pir_read())) relay_on(); else relay_off();
          } else {
             // leer entradas de control de los sensores
             pir_toggle();
@@ -81,7 +120,7 @@ int main(void){
             led_bright(pot_read());
             
             // si los sensores están activados, cualquiera enciende la luz
-            if ((pir_read()) || (lux_read()<MAX_LUX) || (toggle_read())) relay_on(); else relay_off();
+            if ((toggle_read()) || (lux_read()<MAX_LUX) || (pir_read())) relay_on(); else relay_off();
          }
       }
       

@@ -27,12 +27,17 @@ void puertos_init() {
    
    gpioInit(TOGGLE_IN,  GPIO_INPUT);      // entrada toggle  RELAY
    gpioInit(LED_TOGGLE, GPIO_INPUT);      // entrada toggle  LED
+   gpioInit(RELAY_ST_OUT,GPIO_OUTPUT);     // salida  estado  RELAY
+   gpioInit(LED_ST_OUT,GPIO_OUTPUT);     // salida  estado  LED
    
    gpioInit(PIR_IN,     GPIO_INPUT);      // entrada sensor  PIR
    gpioInit(PIR_ENABLE, GPIO_INPUT);      // entrada control PIR
+   gpioInit(PIR_ST_OUT, GPIO_OUTPUT);     // salida  estado  PIR
    
+   gpioInit(LUX_ST_OUT, GPIO_OUTPUT);     // salida  estado  LUX
    gpioInit(LUX_ENABLE, GPIO_INPUT);      // entrada control LUX
    
+   gpioInit(MODE_ST_OUT,GPIO_OUTPUT);     // salida  estado  modo
    gpioInit(MODE_TOGGLE,GPIO_INPUT);      // entrada control modo
    
    /*
