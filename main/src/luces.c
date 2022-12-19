@@ -22,10 +22,12 @@ int relay_change() {
 
 void relay_off() {
    relay_status=ON;        // apagar relay
+   //gpioWrite(RELAY_ST_OUT,ON);
 }
 
 void relay_on() {
    relay_status=OFF;       // encender relay
+   //gpioWrite(RELAY_ST_OUT,OFF);
 }
 
 void relay_toggle() {
@@ -38,16 +40,17 @@ int toggle_read() {
    if (!gpioRead(TOGGLE_IN)) toggle_status=!toggle_status;  // leer la entrada de control
       
    //DEBUG
-   if(toggle_status)
+   /*if(toggle_status)
       gpioWrite(RELAY_ST_OUT,ON);
    else
-      gpioWrite(RELAY_ST_OUT, OFF);
+      gpioWrite(RELAY_ST_OUT, OFF);*/
    
    //printf("* TOGGLE %d *\n",toggle_status);  // debug
    return toggle_status;                                    // y devolver el resultado
 }
 
 void led_bright(int b) {                     // dar brillo al LED   
+   gpioWrite(LED_ST_OUT, led_status);     // debug
    if (led_status) {
       /*
          Tomar el valor recibido y convertirlo a un valor en rango 0..255 para
@@ -87,7 +90,7 @@ void led_off()
    pwmWrite(LED_OUT,0);
 }
 void led_toggle() {
-   if (!gpioRead(LED_TOGGLE)) led_status=!led_status;       // leer entrada de control y actualizar el estado del led
+   //if (!gpioRead(LED_TOGGLE)) led_status=!led_status;       // leer entrada de control y actualizar el estado del led
       
    //DEBUG
    if(led_status)

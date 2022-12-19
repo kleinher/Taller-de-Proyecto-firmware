@@ -71,8 +71,6 @@ int leerJson(){
    uint8_t enter = '\n' ;
    i = 0;
    //Leo json de la uart
-   uartWriteString( UART_USB, "\r\n" );
-   
 
    while( (i < size_json) && (dato != enter)){
       if(uartReadByte( UART_232, &dato)){
@@ -83,8 +81,7 @@ int leerJson(){
       }
    }
 
-   
-   
+
    //Verificación de error
    if((i < size_json)){
       palabra[i-1]='\0';
@@ -94,15 +91,17 @@ int leerJson(){
       uartWriteString( UART_USB, "json" );
       uartWriteString( UART_USB,  string);
       uartWriteString( UART_USB, "\r\n" );*/
-      
+       
       const char *error_ptr = cJSON_GetErrorPtr();
-      if ((error_ptr != NULL || json != NULL))
-         free(palabra);  
-         return 1;
+      if ((error_ptr != NULL || json == NULL)){
+         uartWriteString( UART_USB, "error" );
+         free(palabra); 
+         return 0;
+      }
    }
    free(palabra);  
    //En caso de error retorno false
-   return 0;
+   return 1;
 }
 int imprimirJson(){
    
@@ -123,6 +122,3 @@ int wifiSetup(){
    uartWriteString( UART_USB, miTexto ); // Envi?a "Hola de nuevo\r\n"
    uartWriteString( UART_USB, "\r\n" ); // Enviar un Enter
 }
-
-
-

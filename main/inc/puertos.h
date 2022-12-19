@@ -13,20 +13,19 @@
 #define  POT_IN      CH2         // entrada analógica del potenciómetro (control intensidad LED)
 
 // ENTRADAS DE CONTROL
-#define  TOGGLE_IN   TEC1       // interruptor de encendido de lámpara
-#define  LED_TOGGLE  TEC2       // interruptor de encendido de LED
-#define  PIR_ENABLE  TEC3      // entrada de control del PIR
-#define  LUX_ENABLE  TEC4      // entrada de control del LDR
-#define  MODE_TOGGLE GPIO8       // entrada de control de modo.
+#define  TOGGLE_IN   GPIO1       // interruptor de encendido de lámpara
+#define  LED_TOGGLE  GPIO3       // interruptor de encendido de LED
+#define  PIR_ENABLE  GPIO7      // entrada de control del PIR
+#define  LUX_ENABLE  GPIO8      // entrada de control del LDR
+#define  MODE_TOGGLE GPIO5       // entrada de control de modo.
 
 
 // SALIDAS DE ESTADO
 #define  RELAY_ST_OUT  LEDR     // salida control rele
-#define  LED_ST_OUT  LED1       // salida control tira led
-#define  PIR_ST_OUT  LED2        // salida a LED de estado del PIR
-#define  LUX_ST_OUT  LED3        // salida a LED de estado del LDR
-
-#define  MODE_ST_OUT LCD4      // salida a LED de estado de modo
+#define  LED_ST_OUT  LEDB       // salida control tira led
+#define  PIR_ST_OUT  LED1        // salida a LED de estado del PIR
+#define  LUX_ST_OUT  LED2        // salida a LED de estado del LDR
+#define  MODE_ST_OUT LED3      // salida a LED de estado de modo
 
 
    //DEBUG
