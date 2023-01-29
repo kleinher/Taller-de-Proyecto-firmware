@@ -17,6 +17,7 @@
 #define  LED_TOGGLE  GPIO3       // interruptor de encendido de LED
 #define  PIR_ENABLE  GPIO7      // entrada de control del PIR
 #define  LUX_ENABLE  GPIO8      // entrada de control del LDR
+
 #define  MODE_TOGGLE GPIO5       // entrada de control de modo.
 
 
@@ -27,8 +28,6 @@
 #define  LUX_ST_OUT  LED2        // salida a LED de estado del LDR
 #define  MODE_ST_OUT LED3      // salida a LED de estado de modo
 
-
-   //DEBUG
 
 
 

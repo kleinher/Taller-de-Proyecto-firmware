@@ -72,49 +72,17 @@ int main(void){
                Si es '0' u 'OFF', ignorar la interfaz web y hacer caso a la botonera.
          */
          mode_status = mode_toggle();
+         
          if (mode_status) {
 
             if(leerJson()){
-
+               led();
+               sensor_luminosidad();
+               sensor_movimiento();
                //imprimirJson();
-               if(1){  //debug
-               if(luz_1()){
-                  gpioWrite(RELAY_ST_OUT,ON);
-                  uartWriteString( UART_USB, "luz on \n" );
-               }
-               else{
-                  uartWriteString( UART_USB, "luz off \n" );
-                   gpioWrite(RELAY_ST_OUT,OFF);
-               }
-               if(led()){
-                  led_on();
-                  int a = intensidad();
-                  printf("intensidad %d",a);
-                  led_bright(a);
-                  gpioWrite(LED_ST_OUT,ON);
-                  uartWriteString( UART_USB, "luz on \n" );
-               }else{
-                  uartWriteString( UART_USB, "led off \n" );
-                  led_off();
-                  gpioWrite(LED_ST_OUT, OFF);
-               }
-               if(sensor_luminosidad()){
-                  uartWriteString( UART_USB, "sensor luminosidad on \n" );
-                  gpioWrite(LUX_ST_OUT,ON);
-               }else{
-                  uartWriteString( UART_USB, "sensor luminosidad off \n" );
-                  gpioWrite(LUX_ST_OUT, OFF);
-               }
-               if(sensor_movimiento()){
-                  uartWriteString( UART_USB, "sensor movimiento on  \n" );
-                   pir_on();
-               }else{
-                  uartWriteString( UART_USB, "sensor movimiento off  \n" );
-                   pir_off();
-                  
-               }}
+               
             }
-            //led_bright(led_value())
+            
             if ((luz_1()) || (lux_read()<MAX_LUX) || (pir_read())) relay_on(); else relay_off();
          } else {
             uartWriteString( UART_USB, "modo manual" );

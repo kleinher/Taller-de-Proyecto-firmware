@@ -90,7 +90,7 @@ void led_off()
    pwmWrite(LED_OUT,0);
 }
 void led_toggle() {
-   //if (!gpioRead(LED_TOGGLE)) led_status=!led_status;       // leer entrada de control y actualizar el estado del led
+   if (!gpioRead(LED_TOGGLE)) led_status=!led_status;       // leer entrada de control y actualizar el estado del led
       
    //DEBUG
    if(led_status)
