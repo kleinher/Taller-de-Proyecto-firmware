@@ -31,7 +31,7 @@ int lux_toggle() {
    if(lux_status) lux_on();
    else lux_off();
       
-   printf("* LUX    %d *\n",lux_status);
+   //printf("* LUX    %d *\n",lux_status);
 }
 
 int lux_enabled() {

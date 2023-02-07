@@ -10,4 +10,5 @@ int toggle_read();
 int pot_read();
 void led_toggle();
 void led_on();
+void led_off();
 #endif

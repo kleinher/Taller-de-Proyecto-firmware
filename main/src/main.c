@@ -80,12 +80,10 @@ int main(void){
                sensor_luminosidad();
                sensor_movimiento();
                //imprimirJson();
-               
             }
-            
             if ((luz_1()) || (lux_read()<MAX_LUX) || (pir_read())) relay_on(); else relay_off();
          } else {
-            uartWriteString( UART_USB, "modo manual" );
+
             // leer entradas de control de los sensores
             pir_toggle();
             lux_toggle();

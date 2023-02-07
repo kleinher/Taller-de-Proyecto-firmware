@@ -52,31 +52,7 @@ int toggle_read() {
 void led_bright(int b) {                     // dar brillo al LED   
    gpioWrite(LED_ST_OUT, led_status);     // debug
    if (led_status) {
-      /*
-         Tomar el valor recibido y convertirlo a un valor en rango 0..255 para
-         generar el duty cycle del PWM.
-      
-         El ADC retorna un valor en rango 0..1023: 0..255 entra cuatro veces en
-         este rango, entonces:
-              0.. 255 =  0% -  25% =   0.. 64
-            256.. 511 = 26% -  50% =  65..127
-            512.. 767 = 51% -  75% = 128..191
-            768..1023 = 76% - 100% = 192..255
-      */
-      if(!led_status)
-         pwmWrite(LED_OUT,0);
-      if ((b >= 0) && (b <= 255))           // 0..25 %
-         valor_pwm = b/4;
-      else if ((b >= 256) && (b <= 511))    // 26..50 %
-         valor_pwm = 65 + b/8;
-      else if ((b >= 512) && (b <= 767))    // 51..75 %
-         valor_pwm = 128 + b/12;
-      else                                   // 76..100 %
-         valor_pwm = 192 + b/16;
-      
-      pwmWrite(LED_OUT,valor_pwm);
-      
-      //dacWrite(LED_OUT, b);
+      pwmWrite(LED_OUT, (int) (255 * (b / 1023.0)));
       //printf("* POT    %d *\n",b);     // debug
    } //else printf("* POT    OFF *\n");  // debug
 }
@@ -90,13 +66,18 @@ void led_off()
    pwmWrite(LED_OUT,0);
 }
 void led_toggle() {
-   if (!gpioRead(LED_TOGGLE)) led_status=!led_status;       // leer entrada de control y actualizar el estado del led
-      
+   if (!gpioRead(LED_TOGGLE))
+   { 
+      led_status=!led_status;       // leer entrada de control y actualizar el estado del led
+   }
+   
    //DEBUG
-   if(led_status)
-      gpioWrite(LED_ST_OUT,ON);
-   else
-      gpioWrite(LED_ST_OUT, OFF);
+   if(led_status){
+      led_on();
+      gpioWrite(LED_ST_OUT,ON);}
+   else{
+      led_off();
+      gpioWrite(LED_ST_OUT, OFF);}
 }
 
 int pot_read() {                             // leer potenciometro y devolver el valor

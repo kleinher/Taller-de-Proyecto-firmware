@@ -363,7 +363,7 @@ Posibles configuraciones de baudRate: ``9600, 57600, 115200, etc.``
 
 **Recibir Byte**
 
-``bool_t uartReadByte( uartMap_t uart, uint8_t* receivedByte );``
+``bool_tc``
 
 - Parámetro: ``uartMap_t uart`` UART a configurar (ver UART Map).
 - Parámetro: ``uint8_t* byte`` Dirección de memoria a donde se escribirá el dato recibido en caso de que haya un dato para recibir.

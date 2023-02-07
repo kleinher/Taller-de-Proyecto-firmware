@@ -25,7 +25,7 @@ void pir_toggle() {
    if (!gpioRead(PIR_ENABLE)) pir_status=!pir_status;
    if(pir_status) pir_on();
    else pir_off();
-   printf("* PIR    %d *\n",pir_status);
+   //printf("* PIR    %d *\n",pir_status);
 }
 
 int pir_enabled() {
