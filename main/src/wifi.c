@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include "puertos.h"
 #include "lux.h"
+#include "luces.h"
+#include "pir.h"
 char* itoa(int value, char* result, int base) {
    // check that the base if valid
    if (base < 2 || base > 36) { *result = '\0'; return result; }
@@ -105,6 +107,7 @@ int intensidad(){
    return a;
 
 }
+extern int mode_status;
 int leerJson(){
    
    char* palabra =  (char *) malloc(150 * sizeof(char));  
@@ -113,9 +116,17 @@ int leerJson(){
    uint8_t dato  = 0;
    uint8_t enter = '\n' ;
    i = 0;
+
    //Leo json de la uart
 
    while( (i < size_json) && (dato != enter)){
+      if (!gpioRead(MODE_TOGGLE)){
+         delay(55);
+         if (!gpioRead(MODE_TOGGLE)){
+            mode_status = 0;
+            break;
+         }
+      }
       if(uartReadByte( UART_232, &dato)){
          palabra[i]=dato;
          //uartWriteByte( UART_USB, dato );
@@ -149,12 +160,17 @@ int imprimirJson(){
 int wifiSetup(){
    // ------------- INICIALIZACIONES -------------
 
+   char test[40];
+   waitForReceiveStringOrTimeoutState_t * state;
    // Inicializar UART_USB a 115200 baudios
    uartConfig( UART_USB, 9600 );
    // Inicializar UART_USB a 115200 baudios
    uartConfig( UART_232, 9600 );
    
-   char miTexto[] = "Setup wifi config...\r\n";
-   uartWriteString( UART_USB, miTexto ); // Envi?a "Hola de nuevo\r\n"
+   char* string = "\n";
+
+   
+
+   uartWriteString( UART_USB, "Setup wifi config...\r\n" ); 
    uartWriteString( UART_USB, "\r\n" ); // Enviar un Enter
 }

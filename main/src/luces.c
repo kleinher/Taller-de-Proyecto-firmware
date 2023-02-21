@@ -37,7 +37,12 @@ void relay_toggle() {
 }
 
 int toggle_read() {
-   if (!gpioRead(TOGGLE_IN)) toggle_status=!toggle_status;  // leer la entrada de control
+   if (!gpioRead(TOGGLE_IN)){
+      //delay(10);
+      //if (!gpioRead(TOGGLE_IN)){
+      toggle_status=!toggle_status; 
+      //}
+   } // leer la entrada de control
       
    //DEBUG
    /*if(toggle_status)
@@ -68,7 +73,11 @@ void led_off()
 void led_toggle() {
    if (!gpioRead(LED_TOGGLE))
    { 
-      led_status=!led_status;       // leer entrada de control y actualizar el estado del led
+      delay(10);
+      if (!gpioRead(LED_TOGGLE))
+      {
+         led_status=!led_status;
+      }       // leer entrada de control y actualizar el estado del led
    }
    
    //DEBUG

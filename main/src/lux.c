@@ -25,7 +25,15 @@ void lux_off() {
 }
 
 int lux_toggle() {
-   if (!gpioRead(LUX_ENABLE)) lux_status=!lux_status;       // ver estado de la entrada de control
+   if (!gpioRead(LUX_ENABLE)) 
+   {
+      delay(10);
+      if (!gpioRead(LUX_ENABLE)) 
+      {
+      lux_status=!lux_status;
+      }
+   }       // ver estado de la entrada de control
+   
       
    //DEBUG
    if(lux_status) lux_on();

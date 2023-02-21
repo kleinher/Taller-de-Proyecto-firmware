@@ -15,7 +15,11 @@ void mode_on() {
 }
 
 int mode_toggle() {
-   if (!gpioRead(MODE_TOGGLE)) mode_status=!mode_status;
+   if (!gpioRead(MODE_TOGGLE)){
+      delay(10);
+      if (!gpioRead(MODE_TOGGLE)){
+      mode_status=!mode_status;}
+      }
    if(mode_status) mode_on();
    else mode_off();
    //printf("* Mode    %d *\n",mode_status);
