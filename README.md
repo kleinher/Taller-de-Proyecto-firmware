@@ -33,4 +33,5 @@ El repositorio contiene:
 * 23/11/2022   22:20   Constantino   Corrección PCB
 * 25/11/2022   14:40   Constantino   Informe en PDF
 * 22/02/2023   22:32   Constantino   Limpieza, Informe Final
+* 22/02/2023   22:40   Constantino   Archivo de Proteus v2
 ```
